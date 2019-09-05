@@ -9,7 +9,7 @@ Use this template for creating a new package for the Shells.
 
 ## Description of services
 ### tox
-It's a tool for running tests in multiple virtualenvs
+It's a tool for running tests in multiple virtualenvs  
 To run all tests described in tox.ini just run `tox`  
 To run a particular env use `tox -e env_name`
 
