@@ -5,34 +5,42 @@
 [![PyPI version](https://badge.fury.io/py/cloudshell-package-repo-template.svg)](https://badge.fury.io/py/cloudshell-package-repo-template)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
-Use this template for creating a new package for the Shells.
+Use this template to create new shell packages.
 
 ## Description of services
 ### tox
-It's a tool for running tests in multiple virtualenvs  
-To run all tests described in tox.ini just run `tox`  
-To run a particular env use `tox -e env_name`
+[tox](https://pypi.org/project/tox/) is an open source tool we use to run tests in multiple virtual environments.  
+* To run all tests described in tox.ini, just run `tox`.
+* To run a particular env use `tox -e env_name`.
 
 ### pre-commit
-Run all code linters with a command `pre-commit run --all-files`  
-Add git hook with command `pre-commit install`
-To update versions of pre-commit hooks in config file run `pre-commit autoupdate`
-- **isort** - sorting imports (config in tox.ini)
-- **black** - reformat code to one style (config in pyproject.toml)
-- **flake8** check code style (config in tox.ini), we use these plugins: flake8-docstring for checking docstrings; flake8-builtins for preventing using builtins as variable names; flake8-comprehensions to check list/dict comprehensions; flake8-print to prevent leaving prints in the code; flake8-eradicate to prevent leaving commented code
+[pre-commit](https://pypi.org/project/pre-commit/) is an open source library we use to manage pre-commit hooks.
+* Run all code linters with a command `pre-commit run --all-files`. 
+* Run git hook with command `pre-commit install`.
+* To update versions of pre-commit hooks in config file run `pre-commit autoupdate`
 
-## Installation:
+Additional options:
+* **isort** sorts imports (config in tox.ini)
+* **black** reformats code to one style (config in pyproject.toml)
+* **flake8** checks code style (config in tox.ini). We use these plugins: 
+  * `flake8-docstring` to check docstrings
+  * `flake8-builtins` to avoid using builtins as variable names
+  * `flake8-comprehensions` to check list/dict comprehensions
+  * `flake8-print` to ensure we don't leave prints in the code 
+  * `flake8-eradicate` to ensure we don't leave commented lines in the code
+
+## Installation
 
 ### tox.ini
-- set package-name var regarding your package
-- set python version in envlist
+* Set the `package-name` var regarding your package.
+* Set the python version in envlist.
 
 ### .travis.yml
-- set python version regarding tox.ini
+* Set the python version regarding tox.ini.
 
 ### pyproject.toml
-- set python version for black
+* Set the python version for black.
 
 ### setup.py
-- set name and description for the package
-- set python version
+* Set a name and description for the package.
+* Set the python version of the shell.
