@@ -44,3 +44,6 @@ We use these hooks:
 ### setup.py
 * Set a name and description for the package.
 * Set the python version of the shell.
+
+### README.md
+* Update links for build, coverage etc.
