@@ -16,10 +16,10 @@ Use this template to create new shell packages.
 ### pre-commit
 [pre-commit](https://pypi.org/project/pre-commit/) is an open source library we use to manage pre-commit hooks.
 * Run all code linters with a command `pre-commit run --all-files`. 
-* Run git hook with command `pre-commit install`.
+* Add git hook with command `pre-commit install`.
 * To update versions of pre-commit hooks in config file run `pre-commit autoupdate`
 
-Additional options:
+We use these hooks:
 * **isort** sorts imports (config in tox.ini)
 * **black** reformats code to one style (config in pyproject.toml)
 * **flake8** checks code style (config in tox.ini). We use these plugins: 
