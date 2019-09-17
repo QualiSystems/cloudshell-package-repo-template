@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: isort
         language_version: python3.7
+        exclude: '/mibs'
   - repo: https://github.com/python/black
     rev: 19.3b0
     hooks:

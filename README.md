@@ -47,3 +47,5 @@ We use these hooks:
 
 ### README.md
 * Update links for build, coverage etc.
+* Add the line to README  
+   We use tox and pre-commit for testing. [Services description](https://github.com/QualiSystems/cloudshell-package-repo-template#description-of-services)
