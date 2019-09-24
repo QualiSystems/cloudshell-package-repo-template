@@ -37,9 +37,11 @@ jobs:
     - stage: Create GitHub release
       python: 3.7
       install: skip
-      script: skip
+      env: TOXENV=build
       deploy:
         provider: releases
+        skip_cleanup: true
+        draft: true
         api_key:
           secure: KLO3B6aCZuBNi1A/R8TN3zw5D3pkdEaCeIC0sKw7Yykx6aoSn7zhAHIwM8bbKVm5TvoS9shJveW8KQfGGD684rg9HEm+fDmNoqOmR2Ql3Fldqf5z/rjqclZGj2XcBVTNuDzD4zJZyENmb9quwOlqDAEImNr0DqZ27t3YKU5DwO+8A5PD0o5zPtsb11SzFBAf1AbOs/IyRdLQKBI0akCpipD6GYWBJfgaJaykcdbU8+fnBWLeDh3tpjLpu7nnHTuFq8wiDeIyuIJJ7G6Gm2V+cuoJOwwrima85maQ00ZEBKSfWOXALRZNLXKvObQYvK/4jsqS2TNF391DxPGwtcpBiSsK1bGnLYinw1LnxGh2Cd/nf0apC2MzOOtSD9INzVAUF/wL6Gp4CXxZih0qLS8nI/9B9zbBYYrLdEwrI7QVubMvdwsLmwN4WUiavKSwSN5NtVxfE+V6NpzCrCZ7EphzdO8b7VpfXBhqUkKRkNmxc4I9gbMRSBYy8eAdsq/sXBz5D+vjAnseeK7qTCZK97A7xcxfLFNLY5vXMl+TKu71d6wFGC+t/y9AAco22qApo9rj5iYi7R3sSgN8jHJp0KAF6o8/elL1SLVSH8Y3LMHDLMEighYIBQ9NRLn93eXQ/jWfNUTtEjyzqULaq5S1gdG/Z4svevNwis1rsIphWK8RApw=
         file: dist/*
