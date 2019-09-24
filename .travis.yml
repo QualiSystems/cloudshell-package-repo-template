@@ -22,19 +22,18 @@ jobs:
       python: 3.7
     - env: TOXENV=pre-commit
       python: 3.7
+    - stage: Test PyPI release
+      deploy:
+        provider: pypi
+        server: https://test.pypi.org/legacy/
+        user: quali
+        password:
+          secure: neiCeyxYGTOmLeUvMnc/A1qCgscDvDyLDD4kb3PHEEywjsMhGjrK4HuWCg8Q1SKCJLbeuKDfEjKMy2tl3vhDGV529UU8G3FBCEgFglsrq0ZwuWYl9imXiuDCfBMdTk4eBuPsmp9FAKqXykwYMkfCrkFX30TolI1ATciDUaS075GaMT6BQTjnfCLwkm5XNZ6zO9mMbu4CBvK3bChbe46H7d8m01xcP4HvKIYYXUKD5/6hg1jTGo25EofikwptoYksdezhhT1ygg8qYe9/dbNo9kJ0Z+bOu3sGnjw8n0HHznhjQ8NgTSgraCaTolcWFdc3Ui1B42yRvGZsJ8jb81EzMkZZsVWwUFNx80pdUzlEX3VExYB7IfuhI3iAB3h745320rBYTGLqVyh/2GBsABYLmqAeqgS+me+y2QH+VHZ4uTQmOz5FCs6YhlDEXiQ66UVNBUBTwjVYU+jCvKvnuxxAOv40Ij0AkHEN09gx19xwFB3COvbpm/qEcnORV6VTJA22OHeZYxVy1zdb/lPioC107IeFdokdUt2yqlNyPMvtem+9GTyKaRudfV16g29t6uGFES1vOu1PFoER95hOBzoEhsg3tu6AdVPa3a0jEWZfr6IGeQkDRUfFo/W5hcuxmz5N+5j4AQ8RNCQO+Mc5QnJK6KanDog4mAh6nyGzhM90Yck=
+        on:
+          all_branches: true
 
 install:
   - pip install tox
   - pip install codecov
 
 script: tox
-
-deploy:
-  provider: pypi
-  server: https://test.pypi.org/legacy/
-  user: quali
-  password:
-    secure: neiCeyxYGTOmLeUvMnc/A1qCgscDvDyLDD4kb3PHEEywjsMhGjrK4HuWCg8Q1SKCJLbeuKDfEjKMy2tl3vhDGV529UU8G3FBCEgFglsrq0ZwuWYl9imXiuDCfBMdTk4eBuPsmp9FAKqXykwYMkfCrkFX30TolI1ATciDUaS075GaMT6BQTjnfCLwkm5XNZ6zO9mMbu4CBvK3bChbe46H7d8m01xcP4HvKIYYXUKD5/6hg1jTGo25EofikwptoYksdezhhT1ygg8qYe9/dbNo9kJ0Z+bOu3sGnjw8n0HHznhjQ8NgTSgraCaTolcWFdc3Ui1B42yRvGZsJ8jb81EzMkZZsVWwUFNx80pdUzlEX3VExYB7IfuhI3iAB3h745320rBYTGLqVyh/2GBsABYLmqAeqgS+me+y2QH+VHZ4uTQmOz5FCs6YhlDEXiQ66UVNBUBTwjVYU+jCvKvnuxxAOv40Ij0AkHEN09gx19xwFB3COvbpm/qEcnORV6VTJA22OHeZYxVy1zdb/lPioC107IeFdokdUt2yqlNyPMvtem+9GTyKaRudfV16g29t6uGFES1vOu1PFoER95hOBzoEhsg3tu6AdVPa3a0jEWZfr6IGeQkDRUfFo/W5hcuxmz5N+5j4AQ8RNCQO+Mc5QnJK6KanDog4mAh6nyGzhM90Yck=
-  on:
-    all_branches: true
-    condition: $TOXENV =~ py37-dev
