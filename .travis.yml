@@ -36,7 +36,6 @@ jobs:
           all_branches: true  # fixme
     - stage: Create GitHub release
       python: 3.7
-      install: skip
       env: TOXENV=build
       deploy:
         provider: releases
