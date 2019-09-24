@@ -1,5 +1,4 @@
 language: python
-
 jobs:
   include:
     - if: branch = master
@@ -23,6 +22,7 @@ jobs:
     - env: TOXENV=pre-commit
       python: 3.7
     - stage: Deploy to Test PyPI release
+      python: 3.7
       install: skip
       script: sed -i -E "s/^([0-9]+\.[0-9]+\.[0-9]+)$/\1.$TRAVIS_BUILD_NUMBER/" version.txt
       deploy:
@@ -33,6 +33,17 @@ jobs:
         password:
           secure: neiCeyxYGTOmLeUvMnc/A1qCgscDvDyLDD4kb3PHEEywjsMhGjrK4HuWCg8Q1SKCJLbeuKDfEjKMy2tl3vhDGV529UU8G3FBCEgFglsrq0ZwuWYl9imXiuDCfBMdTk4eBuPsmp9FAKqXykwYMkfCrkFX30TolI1ATciDUaS075GaMT6BQTjnfCLwkm5XNZ6zO9mMbu4CBvK3bChbe46H7d8m01xcP4HvKIYYXUKD5/6hg1jTGo25EofikwptoYksdezhhT1ygg8qYe9/dbNo9kJ0Z+bOu3sGnjw8n0HHznhjQ8NgTSgraCaTolcWFdc3Ui1B42yRvGZsJ8jb81EzMkZZsVWwUFNx80pdUzlEX3VExYB7IfuhI3iAB3h745320rBYTGLqVyh/2GBsABYLmqAeqgS+me+y2QH+VHZ4uTQmOz5FCs6YhlDEXiQ66UVNBUBTwjVYU+jCvKvnuxxAOv40Ij0AkHEN09gx19xwFB3COvbpm/qEcnORV6VTJA22OHeZYxVy1zdb/lPioC107IeFdokdUt2yqlNyPMvtem+9GTyKaRudfV16g29t6uGFES1vOu1PFoER95hOBzoEhsg3tu6AdVPa3a0jEWZfr6IGeQkDRUfFo/W5hcuxmz5N+5j4AQ8RNCQO+Mc5QnJK6KanDog4mAh6nyGzhM90Yck=
         on:
+          all_branches: true  # fixme
+    - stage: Create GitHub release
+      python: 3.7
+      install: skip
+      script: skip
+      deploy:
+        provider: releases
+        api_key:
+          secure: KLO3B6aCZuBNi1A/R8TN3zw5D3pkdEaCeIC0sKw7Yykx6aoSn7zhAHIwM8bbKVm5TvoS9shJveW8KQfGGD684rg9HEm+fDmNoqOmR2Ql3Fldqf5z/rjqclZGj2XcBVTNuDzD4zJZyENmb9quwOlqDAEImNr0DqZ27t3YKU5DwO+8A5PD0o5zPtsb11SzFBAf1AbOs/IyRdLQKBI0akCpipD6GYWBJfgaJaykcdbU8+fnBWLeDh3tpjLpu7nnHTuFq8wiDeIyuIJJ7G6Gm2V+cuoJOwwrima85maQ00ZEBKSfWOXALRZNLXKvObQYvK/4jsqS2TNF391DxPGwtcpBiSsK1bGnLYinw1LnxGh2Cd/nf0apC2MzOOtSD9INzVAUF/wL6Gp4CXxZih0qLS8nI/9B9zbBYYrLdEwrI7QVubMvdwsLmwN4WUiavKSwSN5NtVxfE+V6NpzCrCZ7EphzdO8b7VpfXBhqUkKRkNmxc4I9gbMRSBYy8eAdsq/sXBz5D+vjAnseeK7qTCZK97A7xcxfLFNLY5vXMl+TKu71d6wFGC+t/y9AAco22qApo9rj5iYi7R3sSgN8jHJp0KAF6o8/elL1SLVSH8Y3LMHDLMEighYIBQ9NRLn93eXQ/jWfNUTtEjyzqULaq5S1gdG/Z4svevNwis1rsIphWK8RApw=
+        file: dist/*
+        on:
           all_branches: true
 
 install:
@@ -40,3 +51,8 @@ install:
   - pip install codecov
 
 script: tox
+
+stages:
+  - Test
+  - Deploy to Test PyPI release
+  - Create GitHub release
