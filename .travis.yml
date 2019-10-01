@@ -55,7 +55,6 @@ jobs:
         name: test-name
         release-notes: release notes
         on:
-          tags: true
           all_branches: true
 
 install:
