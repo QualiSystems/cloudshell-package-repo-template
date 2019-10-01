@@ -64,6 +64,8 @@ install:
 script: tox
 
 stages:
-  - Test
-  - Deploy to Test PyPI release
-  - Create GitHub release
+  - name: Test
+  - name: Deploy to Test PyPI release
+    if: branch = dev
+  - name: Create GitHub release
+    if: branch = master
