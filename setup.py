@@ -12,14 +12,16 @@ with open("test_requirements.txt") as f_tests:
     required_for_tests = f_tests.read().splitlines()
 
 setup(
-    name="<your_package_name>",
+    name="cloudshell-template",
     url="http://www.qualisystems.com/",
     author="QualiSystems",
     author_email="info@qualisystems.com",
     packages=find_packages(),
     install_requires=required,
     tests_require=required_for_tests,
-    python_requires="~=2.7",
+    python_requires=(
+        ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*, <4"
+    ),
     version=version_from_file,
     package_data={"": ["*.txt"]},
     description="<your package description>",
