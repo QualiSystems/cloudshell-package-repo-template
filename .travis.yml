@@ -26,6 +26,7 @@ jobs:
       env: TOXENV=build
       before_script: sed -i -E "s/^([0-9]+\.[0-9]+\.[0-9]+)$/\1.$TRAVIS_BUILD_NUMBER/" version.txt
       deploy:
+        distributions: skip
         skip_cleanup: true
         provider: pypi
         server: https://test.pypi.org/legacy/
