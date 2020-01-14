@@ -74,8 +74,8 @@ script: tox
 stages:
   - name: Test
   - name: Deploy to Test PyPI release
-    if: branch = dev
+    if: branch = dev AND type != pull_request
   - name: Create GitHub release
-    if: branch = master
+    if: branch = master AND type != pull_request
   - name: Deploy to PyPI release (now to test PyPI)
     if: tag IS present
