@@ -66,8 +66,11 @@ jobs:
           branch: master
     - stage: Check version
       language: bash
-      install: skip
-      script: git diff --exit-code --quiet master version.txt && echo "You should change version" && exit 1
+      install:
+        - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+        - cd $TRAVIS_REPO_SLUG
+        - git checkout -qf $TRAVIS_COMMIT
+      script: bash -c 'git diff --exit-code --quiet master version.txt && echo "You should change version" && exit 1'
 
 install:
   - pip install tox
