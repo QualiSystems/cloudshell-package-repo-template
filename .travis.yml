@@ -26,9 +26,9 @@ jobs:
         skip_cleanup: true
         provider: pypi
         server: https://test.pypi.org/legacy/
-        user: quali
+        user: "__token__"
         password:
-          secure: neiCeyxYGTOmLeUvMnc/A1qCgscDvDyLDD4kb3PHEEywjsMhGjrK4HuWCg8Q1SKCJLbeuKDfEjKMy2tl3vhDGV529UU8G3FBCEgFglsrq0ZwuWYl9imXiuDCfBMdTk4eBuPsmp9FAKqXykwYMkfCrkFX30TolI1ATciDUaS075GaMT6BQTjnfCLwkm5XNZ6zO9mMbu4CBvK3bChbe46H7d8m01xcP4HvKIYYXUKD5/6hg1jTGo25EofikwptoYksdezhhT1ygg8qYe9/dbNo9kJ0Z+bOu3sGnjw8n0HHznhjQ8NgTSgraCaTolcWFdc3Ui1B42yRvGZsJ8jb81EzMkZZsVWwUFNx80pdUzlEX3VExYB7IfuhI3iAB3h745320rBYTGLqVyh/2GBsABYLmqAeqgS+me+y2QH+VHZ4uTQmOz5FCs6YhlDEXiQ66UVNBUBTwjVYU+jCvKvnuxxAOv40Ij0AkHEN09gx19xwFB3COvbpm/qEcnORV6VTJA22OHeZYxVy1zdb/lPioC107IeFdokdUt2yqlNyPMvtem+9GTyKaRudfV16g29t6uGFES1vOu1PFoER95hOBzoEhsg3tu6AdVPa3a0jEWZfr6IGeQkDRUfFo/W5hcuxmz5N+5j4AQ8RNCQO+Mc5QnJK6KanDog4mAh6nyGzhM90Yck=
+          secure: vSk6/P3sklyabNsEa9xGzL2th7EwtisAJMy+uC9eBqbfCfk7fspUZHNwvpDjI/r+f67Us3svsszR35xIuV2LfO6JqexRVCQzWydwPsAC42g1IgGftkihrxPji8fujxc0rirowUg4PqJdWIQkFvUbYSJWiLt2A2hjsBBxYt5sqa+JHK/HFkd2TLMlWS6zwh3/eFVagT1ju84oVfcXHKD5gPkS/jb/FjfKvD5GOIQbp0OrXomtsYQt+CJfOmN01AYNSmeTPwkHzrJ14AC3oxak6SwPBapoHR/0kJ79FxMt4C73xWEjaKcufD1rCqYIabZN3OHNEwInX6xbIUkiXUOLoGc6aAIeOQvaugy2bd/VSvNtAAmIFFRtp7FS/7/W3jL5Zm/Umn61OxAY7sXqADf8Evtq6Q7WugsxUiD6oKn7aDxzz53Pc91fxnP0mEDtbhlSlcGI3E0n3Qv+NVPrpx2OAz3Oa3hWjofFapP6oddsXdrBmJHVJMct2FvWcxel1j0dfvMIb50MOjQGc1mQA9mfh/1xb6T4RjicJhf27agxCimktGGKaqSUq4A1w1hXRQjENL0FSZUOfcShCc1q1szcPxeLlnY5hUkY3utf4dY5FM/LOpPKDDwrLKF6X7I2dB2nGh3UwOp0EnXQ+23EZYsAJYrVsoyfbN/utGh5pvn65rU=
         on:
           branch: dev
     - stage: Deploy to PyPI release (now to test PyPI)
@@ -64,6 +64,13 @@ jobs:
         target_commitish: master
         on:
           branch: master
+    - stage: Check version
+      language: bash
+      install:
+        - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+        - cd $TRAVIS_REPO_SLUG
+        - git checkout -qf $TRAVIS_PULL_REQUEST_BRANCH
+      script: "! git diff --exit-code --quiet origin/master version.txt"
 
 install:
   - pip install tox
@@ -72,6 +79,8 @@ install:
 script: tox
 
 stages:
+  - name: Check version
+    if: branch = master AND type = pull_request
   - name: Test
   - name: Deploy to Test PyPI release
     if: branch = dev AND type != pull_request
