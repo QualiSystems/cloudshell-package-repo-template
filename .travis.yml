@@ -64,6 +64,14 @@ jobs:
         target_commitish: master
         on:
           branch: master
+    - stage: Check version
+      language: bash
+      script:
+       - 'if git diff --exit-code --quiet master version.txt; then
+            echo "version is updated";
+          else
+            echo "You have to update version";
+          fi'
 
 install:
   - pip install tox
@@ -72,6 +80,8 @@ install:
 script: tox
 
 stages:
+  - name: Check version
+    if: branch = master AND type = pull_request
   - name: Test
   - name: Deploy to Test PyPI release
     if: branch = dev AND type != pull_request
