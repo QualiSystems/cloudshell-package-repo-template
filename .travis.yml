@@ -70,7 +70,7 @@ jobs:
         - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
         - cd $TRAVIS_REPO_SLUG
         - git checkout -qf $TRAVIS_PULL_REQUEST_BRANCH
-        - bash -c "$TRAVIS_PULL_REQUEST_BRANCH"
+        - bash -c "echo $TRAVIS_PULL_REQUEST_BRANCH"
       script: bash -c 'git diff --exit-code --quiet origin/master version.txt && echo "You should change version" && exit 1'
 
 install:
