@@ -66,6 +66,7 @@ jobs:
           branch: master
     - stage: Check version
       language: bash
+      install: skip
       script:
        - 'if git diff --exit-code --quiet master version.txt; then
             echo "version is updated";
