@@ -67,12 +67,7 @@ jobs:
     - stage: Check version
       language: bash
       install: skip
-      script:
-       - 'if git diff --exit-code --quiet master version.txt; then
-            echo "version is updated";
-          else
-            echo "You have to update version";
-          fi'
+      script: git diff --exit-code --quiet master version.txt && echo "You should change version" && exit 1
 
 install:
   - pip install tox
