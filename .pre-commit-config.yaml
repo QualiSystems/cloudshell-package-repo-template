@@ -1,5 +1,5 @@
 repos:
-  - repo: https://github.com/pre-commit/mirrors-isort
+  - repo: https://github.com/timothycrosley/isort
     rev: v4.3.21
     hooks:
       - id: isort
