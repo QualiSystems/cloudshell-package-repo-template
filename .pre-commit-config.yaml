@@ -12,7 +12,7 @@ repos:
         language_version: python3.7
         exclude: '/mibs'
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.7.9
+    rev: 3.8.3
     hooks:
       - id: flake8
         additional_dependencies: [
