@@ -89,8 +89,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Check version
         run: |
-          cat version.txt
-          git status
+          git clone https://github.com/${{ github.repository }}.git ${{ github.repository }}
+          cd ${{ github.repository }}
+          git checkout -qf ${{ github.head_ref }}
           git diff origin/master version.txt
   deploy-to-test-pypi:
     needs: [tests, pre-commit, build]
