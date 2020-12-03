@@ -119,13 +119,13 @@ jobs:
           TOXENV: build
         run: tox
       - name: Set envs
-          run: |
-            version="$(cat version.txt | tr -d ' \t\n\r')"
-            repo_owner=${{ github.repository }}
-            index=`expr index "$repo_owner" /`
-            repo=${repo_owner:index}
-            echo "TAG=$version" >> $GITHUB_ENV
-            echo "REPO=$repo" >> $GITHUB_ENV
+        run: |
+          version="$(cat version.txt | tr -d ' \t\n\r')"
+          repo_owner=${{ github.repository }}
+          index=`expr index "$repo_owner" /`
+          repo=${repo_owner:index}
+          echo "TAG=$version" >> $GITHUB_ENV
+          echo "REPO=$repo" >> $GITHUB_ENV
       - name: Create GitHub release
         uses: ncipollo/release-action@v1
         with:
