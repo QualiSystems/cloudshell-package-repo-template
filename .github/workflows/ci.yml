@@ -100,7 +100,7 @@ jobs:
           password: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
   create-gh-release:
-    needs: [ tests, pre-commit, build ]
+    needs: [tests, pre-commit, build]
       if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push' }}
       runs-on: ubuntu-latest
       steps:
