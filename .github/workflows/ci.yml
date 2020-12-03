@@ -73,7 +73,7 @@ jobs:
           TOXENV: build
         run: tox
   deploy-to-test-pypi:
-    if: ${{ github.ref == 'refs/heads/dev' && github.event.push }}
+    if: ${{ github.ref == 'refs/heads/dev' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
