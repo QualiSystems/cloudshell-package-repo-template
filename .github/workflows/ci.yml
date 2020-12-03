@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - "*"
-    tags:
-      - "*"
   pull_request:
     branches:
+      - "*"
+  create:
+    tags:
       - "*"
 
 jobs:
