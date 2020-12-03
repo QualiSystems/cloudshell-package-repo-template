@@ -73,6 +73,7 @@ jobs:
           TOXENV: build
         run: tox
   deploy-to-test-pypi:
+    needs: [tests, pre-commit, build]
     if: ${{ github.ref == 'refs/heads/dev' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
