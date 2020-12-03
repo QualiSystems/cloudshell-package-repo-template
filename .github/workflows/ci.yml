@@ -7,9 +7,8 @@ on:
   pull_request:
     branches:
       - "*"
-  create:
-    tags:
-      - "*"
+  release:
+    types: [published]
 
 jobs:
   tests:
