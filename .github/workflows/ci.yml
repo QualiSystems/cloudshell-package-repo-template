@@ -82,7 +82,7 @@ jobs:
         run: tox
   check-version:
     name: Check version
-    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'refs/heads/master' }}
+    if: ${{ github.base_ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
