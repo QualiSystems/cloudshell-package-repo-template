@@ -92,7 +92,7 @@ jobs:
           git clone https://github.com/${{ github.repository }}.git ${{ github.repository }}
           cd ${{ github.repository }}
           git checkout -qf ${{ github.head_ref }}
-          "! git diff --exit-code --quiet origin/master version.txt"
+          git diff --exit-code --quiet origin/master version.txt
   deploy-to-test-pypi:
     needs: [tests, pre-commit, build]
     if: ${{ github.ref == 'refs/heads/dev' && github.event_name == 'push' }}
