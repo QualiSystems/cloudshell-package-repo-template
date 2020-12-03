@@ -80,6 +80,15 @@ jobs:
         env:
           TOXENV: build
         run: tox
+  check-version:
+    name: Check version
+    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Check version
+        run: ! git diff --exit-code --quiet origin/master version.txt
   deploy-to-test-pypi:
     needs: [tests, pre-commit, build]
     if: ${{ github.ref == 'refs/heads/dev' && github.event_name == 'push' }}
