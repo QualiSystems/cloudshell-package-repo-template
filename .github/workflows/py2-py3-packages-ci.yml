@@ -35,7 +35,7 @@ jobs:
           target_branch=${{ github.base_ref || github.ref }}
           target_branch=(`[[ ${target_branch::10} == 'refs/heads' ]] && echo ${target_branch:11} || echo $target_branch`)
           echo $target_branch
-          is_master=${{ env.target_branch == "master" }}
+          is_master=${{ env.target_branch == master }}
           echo $is_master
           branch=(`[[ $is_master == 'true' ]] && echo 'master' || echo 'dev'`)
           TOXENV="py$py_version-$branch"
