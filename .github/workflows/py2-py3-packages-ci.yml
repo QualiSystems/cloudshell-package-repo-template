@@ -4,11 +4,17 @@ on:
   push:
     branches:
       - "*"
+    paths-ignore:
+      - "README.md"
   pull_request:
     branches:
       - "*"
+    paths-ignore:
+      - "README.md"
   release:
     types: [published]
+    paths-ignore:
+      - "README.md"
 
 jobs:
   tests:
