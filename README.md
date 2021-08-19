@@ -1,6 +1,6 @@
 # CloudShell package repo template
 
-test
+test2
 
 [![Build status](https://github.com/QualiSystems/cloudshell-package-repo-template/workflows/CI/badge.svg?branch=master)](https://github.com/QualiSystems/cloudshell-package-repo-template/actions?query=branch%3Amaster)
 [![codecov](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template/branch/dev/graph/badge.svg)](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template)
