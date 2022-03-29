@@ -1,8 +1,8 @@
 # CloudShell package repo template
 
 [![Build status](https://github.com/QualiSystems/cloudshell-package-repo-template/workflows/CI/badge.svg?branch=master)](https://github.com/QualiSystems/cloudshell-package-repo-template/actions?query=branch%3Amaster)
-[![codecov](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template/branch/dev/graph/badge.svg)](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template)
-[![PyPI version](https://shields.io/pypi/v/cloudshell-template)](https://pypi.org/project/cloudshell-template)
+[![codecov](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template/branch/master/graph/badge.svg)](https://codecov.io/gh/QualiSystems/cloudshell-package-repo-template)
+[![PyPI version](https://badge.fury.io/py/cloudshell-template.svg)](https://badge.fury.io/py/cloudshell-template)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
 Use this template to create new shell packages.
