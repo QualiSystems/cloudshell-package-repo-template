@@ -6,5 +6,5 @@ on:
     branches:
       - master
 jobs:
-  tox-ci:
+  check-version:
     uses: ./.github/workflows/check-version-ci.yml
