@@ -3,13 +3,13 @@ on:
   workflow_call:
 jobs:
   pre-commit:
-    uses: ./.github/workflows/tox-pre-commit.yml
+    uses: ./.github/workflows/reusing-tox-pre-commit.yml
   build:
-    uses: ./.github/workflows/tox-build.yml
+    uses: ./.github/workflows/reusing-tox-build.yml
   tests:
     strategy:
       matrix:
         py-version: [ "3.7", "3.9" ]
-    uses: ./.github/workflows/tox-tests.yml
+    uses: ./.github/workflows/reusing-tox-tests.yml
     with:
       py-version: ${{ matrix.py-version }}

@@ -7,4 +7,4 @@ on:
       - master
 jobs:
   check-version:
-    uses: ./.github/workflows/check-version-ci.yml
+    uses: ./.github/workflows/reusing-check-version.yml
