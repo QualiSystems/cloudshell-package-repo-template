@@ -7,4 +7,4 @@ on:
       - master
 jobs:
   check-version:
-    uses: ./.github/workflows/reusing-check-version.yml
+    uses: QualiSystems/.github/.github/workflows/package-check-version.yml@reusing-workflows
