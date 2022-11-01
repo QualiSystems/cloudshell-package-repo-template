@@ -4,7 +4,7 @@ on:
       PYPI_TOKEN:
         required: true
 jobs:
-  deploy-to-test-pypi:
+  deploy-to-pypi:
     runs-on: ubuntu-latest
     steps:
       - name: Get package
