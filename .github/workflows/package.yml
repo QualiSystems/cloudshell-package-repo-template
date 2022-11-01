@@ -7,4 +7,4 @@ on:
       - master
 jobs:
   tox-ci:
-    uses: ./.github/workflows/reusing-tox-py37-39.yml
+    uses: QualiSystems/.github/.github/workflows/package-tox-py-37-39.yml@reusing-worflows
