@@ -1,0 +1,8 @@
+name: CI
+on:
+  push:
+    paths-ignore:
+      - "README.md"
+jobs:
+  pre-commit:
+    uses: ./.github/pre-commit.yml
