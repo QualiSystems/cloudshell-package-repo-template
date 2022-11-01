@@ -1,0 +1,19 @@
+on:
+  workflow_call:
+    secrets:
+      PYPI_TOKEN:
+        required: true
+jobs:
+  deploy-to-test-pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get package
+        uses: actions/download-artifact@v3
+        with:
+          name: package files
+          path: dist/
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
