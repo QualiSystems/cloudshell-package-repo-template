@@ -11,4 +11,3 @@ jobs:
   pypi-deploy:
     needs: tox-ci
     uses: ./.github/workflows/reusing-github-release.yml
-    secrets: inherit
