@@ -5,6 +5,13 @@ on:
       - "README.md"
 jobs:
   pre-commit:
-    uses: ./.github/workflows/pre-commit.yml
+    uses: ./.github/workflows/tox-pre-commit.yml
   build:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/tox-build.yml
+  tests:
+    strategy:
+      matrix:
+        py-version: [ "3.7", "3.9" ]
+    uses: ./.github/workflows/tox-tests.yml
+    with:
+      target: ${{ matrix.py-version }}
