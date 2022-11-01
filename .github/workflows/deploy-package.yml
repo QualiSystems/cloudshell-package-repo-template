@@ -5,8 +5,8 @@ on:
       - README.md
 jobs:
   tox-ci:
-    uses: ./.github/workflows/tox-ci-py37-39.yml
+    uses: ./.github/workflows/reusing-tox-ci-py37-39.yml
   pypi-deploy:
     needs: tox-ci
-    uses: ./.github/workflows/deploy-pypi.yml
+    uses: ./.github/workflows/reusing-deploy-pypi.yml
     secrets: inherit
