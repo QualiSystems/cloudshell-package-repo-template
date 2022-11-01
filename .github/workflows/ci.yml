@@ -14,4 +14,4 @@ jobs:
         py-version: [ "3.7", "3.9" ]
     uses: ./.github/workflows/tox-tests.yml
     with:
-      target: ${{ matrix.py-version }}
+      py-version: ${{ matrix.py-version }}
