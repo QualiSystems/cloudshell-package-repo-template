@@ -1,8 +1,7 @@
 name: deploy package
 on:
-  push:
-    paths-ignore:
-      - README.md
+  release:
+    types: [ published ]
 jobs:
   tox-ci:
     uses: ./.github/workflows/reusing-tox-py37-39.yml
