@@ -1,8 +1,8 @@
-name: pre-commit
+name: build
 on:
   workflow_call:
 jobs:
-  pre-commit:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -13,7 +13,12 @@ jobs:
           python-version: 3.9
       - name: Install dependencies
         run: pip install tox
-      - name: Run pre-commit
+      - name: Build
         env:
-          TOXENV: pre-commit
+          TOXENV: build
         run: tox
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: package files
+          path: dist/*
