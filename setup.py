@@ -18,5 +18,6 @@ setup(
     version=read_file("version.txt"),
     package_data={"": ["*.txt"]},
     description="<your package description>",
+    long_description="<your package description>",
     include_package_data=True,
 )
