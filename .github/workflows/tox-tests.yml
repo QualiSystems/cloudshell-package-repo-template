@@ -8,6 +8,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    name: unit tests py ${{ inputs.py-version }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
