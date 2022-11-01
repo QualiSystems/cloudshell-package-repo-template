@@ -1,0 +1,14 @@
+name: github release
+on:
+  push:
+    paths-ignore:
+      - README.md
+    branches:
+      - master
+jobs:
+  tox-ci:
+    uses: ./.github/workflows/reusing-tox-py37-39.yml
+  pypi-deploy:
+    needs: tox-ci
+    uses: ./.github/workflows/reusing-github-release.yml
+    secrets: inherit
