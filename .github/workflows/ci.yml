@@ -5,4 +5,4 @@ on:
       - "README.md"
 jobs:
   pre-commit:
-    uses: ./.github/pre-commit.yml
+    uses: ./.github/workflows/pre-commit.yml
