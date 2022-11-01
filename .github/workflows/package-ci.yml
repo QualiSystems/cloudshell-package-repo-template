@@ -2,7 +2,7 @@ name: package CI
 on:
   push:
     paths-ignore:
-      - "README.md"
+      - README.md
 jobs:
   tox-ci:
     uses: ./.github/workflows/tox-ci-py37-39.yml

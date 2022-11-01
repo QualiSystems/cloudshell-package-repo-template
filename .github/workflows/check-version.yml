@@ -1,0 +1,10 @@
+name: check version
+on:
+  pull_request:
+    paths-ignore:
+      - README.md
+    branches:
+      - master
+jobs:
+  tox-ci:
+    uses: ./.github/workflows/check-version-ci.yml

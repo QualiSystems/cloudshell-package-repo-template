@@ -1,0 +1,15 @@
+name: build
+on:
+  workflow_call:
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Check version
+        run: |
+          git clone https://github.com/${{ github.repository }}.git ${{ github.repository }}
+          cd ${{ github.repository }}
+          git checkout -qf ${{ github.head_ref }}
+          ! git diff --exit-code --quiet origin/master version.txt
