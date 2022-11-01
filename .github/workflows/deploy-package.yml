@@ -7,5 +7,5 @@ jobs:
   tox-ci:
     uses: ./.github/workflows/tox-ci-py37-39.yml
   pypi-deploy:
-    uses: ./github/workflows/deploy-pypi.yml
+    uses: ./.github/workflows/deploy-pypi.yml
     secrets: inherit
