@@ -1,0 +1,33 @@
+on:
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+jobs:
+  create-gh-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set envs
+        run: |
+          version="$(cat version.txt | tr -d ' \t\n\r')"
+          repo_owner=${{ github.repository }}
+          index=`expr index "$repo_owner" /`
+          repo=${repo_owner:index}
+          echo "TAG=$version" >> $GITHUB_ENV
+          echo "REPO=$repo" >> $GITHUB_ENV
+      - name: Get package
+        uses: actions/download-artifact@v3
+        with:
+          name: package files
+          path: dist/
+      - name: Create GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "dist/*"
+          draft: true
+          name: ${{ env.REPO }} ${{ env.TAG }}
+          tag: ${{ env.TAG }}
+          commit: master
