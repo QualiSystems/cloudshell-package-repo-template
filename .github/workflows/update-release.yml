@@ -1,11 +1,6 @@
 name: update release
 on:
   workflow_dispatch:
-    inputs:
-      empty:
-        description: "useless param"
-        required: false
-        default: ""
 jobs:
   tox-ci:
     uses: QualiSystems/.github/.github/workflows/tox-build.yml@master
