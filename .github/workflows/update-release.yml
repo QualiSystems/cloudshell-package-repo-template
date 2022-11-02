@@ -1,4 +1,4 @@
-name: tox CI
+name: update release
 on:
   workflow_dispatch:
     inputs:
