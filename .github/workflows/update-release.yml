@@ -25,12 +25,12 @@ jobs:
           path: dist/
       - name: remove zip
         run: rm dist/*.zip
-      - name: Create GitHub release
+      - name: Update GitHub release
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "dist/*"
-          tag: ${{ env.TAG }}
+          tag: 1.4.2
           commit: master
           allowUpdates: true
           omitBodyDuringUpdate: true
