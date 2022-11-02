@@ -1,0 +1,40 @@
+name: tox CI
+on:
+  workflow_dispatch:
+    inputs:
+      empty:
+        description: "useless param"
+        required: false
+        default: ""
+jobs:
+  tox-ci:
+    uses: QualiSystems/.github/.github/workflows/package-tox-py-37-39.yml@master
+  create-gh-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set envs
+        run: |
+          version="$(cat version.txt | tr -d ' \t\n\r')"
+          repo_owner=${{ github.repository }}
+          index=`expr index "$repo_owner" /`
+          repo=${repo_owner:index}
+          echo "TAG=$version" >> $GITHUB_ENV
+          echo "REPO=$repo" >> $GITHUB_ENV
+      - name: Get package
+        uses: actions/download-artifact@v3
+        with:
+          name: package files
+          path: dist/
+      - name: Create GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "dist/*"
+          tag: ${{ env.TAG }}
+          commit: master
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
+          omitNameDuringUpdate: true

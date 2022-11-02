@@ -4,7 +4,7 @@ on:
     paths-ignore:
       - README.md
     branches:
-      - master
+      - update-github-release
 jobs:
   tox-ci:
     uses: QualiSystems/.github/.github/workflows/package-tox-py-37-39.yml@master
