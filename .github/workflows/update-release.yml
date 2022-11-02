@@ -5,6 +5,7 @@ jobs:
   tox-ci:
     uses: QualiSystems/.github/.github/workflows/tox-build.yml@master
   create-gh-release:
+    needs: tox-ci
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
