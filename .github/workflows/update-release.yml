@@ -23,6 +23,8 @@ jobs:
         with:
           name: package files
           path: dist/
+      - name: remove zip
+        run: rm dist/*.zip
       - name: Create GitHub release
         uses: ncipollo/release-action@v1
         with:
