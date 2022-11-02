@@ -4,10 +4,10 @@ on:
     paths-ignore:
       - README.md
     branches:
-      - update-github-release
+      - master
 jobs:
   tox-ci:
-    uses: QualiSystems/.github/.github/workflows/tox-build.yml@master
+    uses: QualiSystems/.github/.github/workflows/package-tox-py-37-39.yml@master
   pypi-deploy:
     needs: tox-ci
     uses: QualiSystems/.github/.github/workflows/package-github-release.yml@master
