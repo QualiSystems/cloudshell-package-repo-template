@@ -30,7 +30,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "dist/*"
-          tag: 1.4.2
+          tag: ${{ env.TAG }}
           commit: master
           allowUpdates: true
           omitBodyDuringUpdate: true
