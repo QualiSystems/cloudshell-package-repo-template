@@ -25,11 +25,10 @@ repos:
           flake8-comprehensions,
           flake8-print,
           flake8-eradicate,
-          flake8-requirements-absolute-imports,
+          flake8-requirements,
         ]
         args: [
-          --project-base-module=cloudshell.template,
-          "--known-modules=cloudshell-shell-core:[cloudshell.shell.core]"
+          "--known-modules=cloudshell-template:[cloudshell.template],cloudshell-shell-core:[cloudshell.shell.core]"
         ]
         exclude: '/mibs'
   - repo: https://github.com/pre-commit/mirrors-mypy
